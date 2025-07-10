@@ -5,6 +5,7 @@ import connectDB from "./config/db.js";
 import testRoutes from "./routes/test.js";
 import userRoutes from "./routes/user.route.js";
 import authRoutes from "./routes/auth.js";
+import moodRoutes from "./routes/mood.js";
 
 dotenv.config();
 console.log("MONGO_URI:", process.env.MONGO_URI); // Dodato za proveru
@@ -18,6 +19,7 @@ connectDB();
 app.use("/test", testRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/moods", moodRoutes);
 
 app.get("/", (req, res) => {
   res.send("API radi!");

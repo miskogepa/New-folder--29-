@@ -4,16 +4,17 @@ import {
   updateUserProfile,
   deleteUser,
 } from "../controllers/userController.js";
+import auth from "../middleware/auth.js";
 
 const router = express.Router();
 
-// Prikaz korisničkog profila
+// Prikaz korisničkog profila (javno)
 router.get("/:id", getUserProfile);
 
-// Izmena korisničkog profila
-router.put("/:id", updateUserProfile);
+// Izmena korisničkog profila (privatno)
+router.put("/:id", auth, updateUserProfile);
 
-// Brisanje korisničkog naloga
-router.delete("/:id", deleteUser);
+// Brisanje korisničkog naloga (privatno)
+router.delete("/:id", auth, deleteUser);
 
 export default router;
